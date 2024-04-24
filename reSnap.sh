@@ -83,7 +83,7 @@ while [ $# -gt 0 ]; do
     echo "  $0 -f                 # Remove white background"
     echo "  $0 -p                 # no pixel format correction (reMarkable2 version < 3.6)"
     echo "  $0 -v                 # displays version"
-    echo "  $0 --sketch           # Construct sketc"
+    echo "  $0 --sketch           # Construct sketch"
     echo "  $0 -i                 # Invert colors"
     echo "  $0 -h                 # displays help information (this)"
     exit 2
