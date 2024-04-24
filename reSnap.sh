@@ -138,7 +138,7 @@ elif [ "$rm_version" = "reMarkable 2.0" ]; then
   # pixel format
   if [ "$byte_correction" = "true" ]; then
     bytes_per_pixel=2
-    pixel_format="gray16"
+    pixel_format="gray16le"
     filters="$filters,transpose=3" # 90° clockwise and vertical flip
   else
     bytes_per_pixel=1
@@ -177,7 +177,10 @@ elif [ "$rm_version" = "reMarkable 2.0" ]; then
 
   # color correction
   if [ "$color_correction" = "true" ]; then
-    filters="$filters,curves=all=0.045/0 0.06/1"
+    # The background is 11.7% black, so we use this for a treshold, and also
+    # adjust the level for what should totally black so that we can support the
+    # grayscale/color levels coming with the new drawing tools
+    filters="$filters,curves=all=0.040/0 0.117/1"
   fi
 
 else
